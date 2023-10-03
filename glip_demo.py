@@ -125,9 +125,13 @@ class GLIPModel(object):
 
         if need_draw:
             result_image = self.draw_with_results(image, results)
-            results['result_image'] = result_image
+            results['boxes'] = results['boxes'].numpy().tolist()
+            results['class_idx'] = results['class_idx'].numpy().tolist()
+            # results['result_image'] = result_image.tolist()
             return results, result_image[..., ::-1]
         else:
+            results['boxes'] = results['boxes'].numpy().tolist()
+            results['class_idx'] = results['class_idx'].numpy().tolist()
             return results, None
 
     @staticmethod
