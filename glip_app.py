@@ -75,7 +75,7 @@ score_thresh = gr.Slider(
 need_draw = gr.Checkbox(label="Draw", info="Do you wan to draw the results?")
 
 # ======== ouptut =============
-text_output = gr.Textbox(label="Output text")
+text_output = gr.JSON(label="Output text")
 
 image_output = gr.outputs.Image(
             type="pil",
@@ -88,5 +88,5 @@ gr.Interface(
     fn=glip_model.inference,
     inputs=[image_input, caption_input, score_thresh, need_draw],
     outputs=[text_output, image_output]
-).launch(share=True, enable_queue=True, server_port=27862)
+).launch(share=True, enable_queue=True, server_port=7862)
 # ).launch(server_name="0.0.0.0", server_port=7000, share=True)
